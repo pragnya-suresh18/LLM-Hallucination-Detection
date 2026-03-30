@@ -1,0 +1,28 @@
+{
+  "total_passages": 238,
+  "total_sentences": 1908,
+  "label_distribution": {
+    "accurate": 516,
+    "hallucinated": 1392
+  },
+  "hallucination_rate": 0.7295597484276729,
+  "avg_sentences_per_passage": 8.016806722689076,
+  "stochastic_samples_per_passage": 20,
+  "splits": {
+    "train": {
+      "passages": 166,
+      "sentences": 1338,
+      "hallucination_rate": 0.7055306427503737
+    },
+    "val": {
+      "passages": 36,
+      "sentences": 292,
+      "hallucination_rate": 0.773972602739726
+    },
+    "test": {
+      "passages": 36,
+      "sentences": 278,
+      "hallucination_rate": 0.7985611510791367
+    }
+  }
+}
