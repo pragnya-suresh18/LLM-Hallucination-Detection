@@ -1,0 +1,135 @@
+{
+  "train": {
+    "split": "train",
+    "threshold": 0.45,
+    "n": 1338,
+    "precision": 0.827016520894072,
+    "recall": 0.9014830508474576,
+    "f1": 0.8626457171819564,
+    "roc_auc": 0.8267094338810979,
+    "pr_auc": 0.9092438296771399,
+    "confusion_matrix": [
+      [
+        216,
+        178
+      ],
+      [
+        93,
+        851
+      ]
+    ]
+  },
+  "val": {
+    "split": "val",
+    "threshold": 0.45,
+    "n": 292,
+    "precision": 0.8857142857142857,
+    "recall": 0.9601769911504425,
+    "f1": 0.921443736730361,
+    "roc_auc": 0.8703405738803969,
+    "pr_auc": 0.9499245175852781,
+    "confusion_matrix": [
+      [
+        38,
+        28
+      ],
+      [
+        9,
+        217
+      ]
+    ]
+  },
+  "test": {
+    "split": "test",
+    "threshold": 0.45,
+    "n": 278,
+    "precision": 0.8702928870292888,
+    "recall": 0.9369369369369369,
+    "f1": 0.9023861171366594,
+    "roc_auc": 0.7717181467181466,
+    "pr_auc": 0.9084973483063932,
+    "confusion_matrix": [
+      [
+        25,
+        31
+      ],
+      [
+        14,
+        208
+      ]
+    ]
+  },
+  "nli_only_test": {
+    "split": "test (NLI-only)",
+    "threshold": 0.4500000000000001,
+    "n": 278,
+    "precision": 0.8548387096774194,
+    "recall": 0.954954954954955,
+    "f1": 0.902127659574468,
+    "roc_auc": 0.8231981981981982,
+    "pr_auc": 0.9445292650878189,
+    "confusion_matrix": [
+      [
+        20,
+        36
+      ],
+      [
+        10,
+        212
+      ]
+    ]
+  },
+  "confidence_only_test": {
+    "split": "test (Confidence-only)",
+    "threshold": 0.1,
+    "n": 278,
+    "precision": 0.8027522935779816,
+    "recall": 0.7882882882882883,
+    "f1": 0.7954545454545454,
+    "roc_auc": 0.464527027027027,
+    "pr_auc": 0.7632715741237716,
+    "confusion_matrix": [
+      [
+        13,
+        43
+      ],
+      [
+        47,
+        175
+      ]
+    ]
+  },
+  "best_alpha": 0.7,
+  "best_tau": 0.45,
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "entity_types": [
+    "PERSON",
+    "ORG",
+    "GPE",
+    "DATE",
+    "CARDINAL",
+    "NORP",
+    "LOC",
+    "FAC"
+  ],
+  "baseline_comparison": [
+    {
+      "method": "SelfCheck-NLI",
+      "pr_auc": 0.925,
+      "roc_auc": null,
+      "f1": null
+    },
+    {
+      "method": "Confidence-only (Llama-3.1)",
+      "pr_auc": 0.7632715741237716,
+      "roc_auc": 0.464527027027027,
+      "f1": 0.7954545454545454
+    },
+    {
+      "method": "Hybrid (\u03b1=0.7, Llama-3.1 + NLI)",
+      "pr_auc": 0.9084973483063932,
+      "roc_auc": 0.7717181467181466,
+      "f1": 0.9023861171366594
+    }
+  ]
+}
