@@ -1,0 +1,307 @@
+{
+  "frozen_hyperparameters": {
+    "alpha": 0.7,
+    "tau": 0.45,
+    "clip_max": 4.620431868864432,
+    "vmin": 2.706014311115723e-05,
+    "vmax": 4.620431868864432
+  },
+  "test_sentence_count": 278,
+  "detection_mitigation": {
+    "flagged_before": 239,
+    "flagged_after": 216,
+    "reduction_rate": 0.09623430962343094,
+    "recovery_rate": 0.10576923076923077,
+    "false_negative_creation_rate": 0.14285714285714285,
+    "mean_hybrid_drop": 0.03963335531135399,
+    "mean_confidence_drop": -0.06280431109561484,
+    "mean_nli_drop": 0.08353521234291207
+  },
+  "collateral_damage": {
+    "accurate_touched": 31,
+    "remained_accurate": 5,
+    "became_hallucinated": 26,
+    "remained_accurate_rate": 0.16129032258064516
+  },
+  "untouched_invariant_ok": false,
+  "entity_level": {
+    "span_mask_test_count": 63,
+    "type_preserved_checked": 76,
+    "type_preserved_hits": 39,
+    "entity_type_preserved_rate": 0.5131578947368421,
+    "wiki_match_checked": 76,
+    "wiki_match_hits": 38,
+    "replacement_in_wiki_rate": 0.5
+  },
+  "sentence_aligned_nli": {
+    "n": 239,
+    "mean_contradiction_before": 0.8507886237302156,
+    "mean_contradiction_after": 0.7813070450129356,
+    "mean_delta": -0.06948157871728003,
+    "improved": 92,
+    "worsened": 45,
+    "unchanged": 102,
+    "by_repair_mode": {
+      "span_mask": {
+        "n": 63,
+        "mean_before": 0.8468459321071379,
+        "mean_after": 0.7063874192332612,
+        "mean_delta": -0.14045851287387667,
+        "improved": 28,
+        "worsened": 6,
+        "unchanged": 29
+      },
+      "full_sentence": {
+        "n": 176,
+        "mean_before": 0.8521999281180218,
+        "mean_after": 0.8081248656045236,
+        "mean_delta": -0.044075062513498284,
+        "improved": 64,
+        "worsened": 39,
+        "unchanged": 73
+      }
+    },
+    "by_label": {
+      "0": {
+        "n": 31,
+        "mean_before": 0.5636924858272616,
+        "mean_after": 0.6727076378705416,
+        "mean_delta": 0.10901515204327993,
+        "improved": 6,
+        "worsened": 14,
+        "unchanged": 11
+      },
+      "1": {
+        "n": 208,
+        "mean_before": 0.8935769904369059,
+        "mean_after": 0.797492533577427,
+        "mean_delta": -0.09608445685947888,
+        "improved": 86,
+        "worsened": 31,
+        "unchanged": 91
+      }
+    }
+  },
+  "ablation_matrix": [
+    {
+      "row": 1,
+      "detection": "None",
+      "repair": "None",
+      "source": "sentences_with_splits.csv",
+      "metric": "hallucination_rate",
+      "value": 0.7295597484276729
+    },
+    {
+      "row": 2,
+      "detection": "Confidence-only",
+      "repair": "\u2014",
+      "source": "phase3_eval_results.json",
+      "test_metrics": {
+        "split": "test (Confidence-only)",
+        "threshold": 0.1,
+        "n": 278,
+        "precision": 0.8027522935779816,
+        "recall": 0.7882882882882883,
+        "f1": 0.7954545454545454,
+        "roc_auc": 0.464527027027027,
+        "pr_auc": 0.7632715741237716,
+        "confusion_matrix": [
+          [
+            13,
+            43
+          ],
+          [
+            47,
+            175
+          ]
+        ]
+      }
+    },
+    {
+      "row": 3,
+      "detection": "NLI-only",
+      "repair": "\u2014",
+      "source": "phase3_eval_results.json",
+      "test_metrics": {
+        "split": "test (NLI-only)",
+        "threshold": 0.4500000000000001,
+        "n": 278,
+        "precision": 0.8548387096774194,
+        "recall": 0.954954954954955,
+        "f1": 0.902127659574468,
+        "roc_auc": 0.8231981981981982,
+        "pr_auc": 0.9445292650878189,
+        "confusion_matrix": [
+          [
+            20,
+            36
+          ],
+          [
+            10,
+            212
+          ]
+        ]
+      }
+    },
+    {
+      "row": 4,
+      "detection": "Hybrid (\u03b1=0.7, \u03c4=0.45)",
+      "repair": "\u2014",
+      "source": "phase3_eval_results.json",
+      "test_metrics": {
+        "split": "test",
+        "threshold": 0.45,
+        "n": 278,
+        "precision": 0.8702928870292888,
+        "recall": 0.9369369369369369,
+        "f1": 0.9023861171366594,
+        "roc_auc": 0.7717181467181466,
+        "pr_auc": 0.9084973483063932,
+        "confusion_matrix": [
+          [
+            25,
+            31
+          ],
+          [
+            14,
+            208
+          ]
+        ]
+      }
+    },
+    {
+      "row": 5,
+      "detection": "Hybrid (\u03b1=0.7, \u03c4=0.45)",
+      "repair": "Mixed (span_mask + full_sentence)",
+      "source": "phase5 this run",
+      "test_flagged_before": 239,
+      "test_flagged_after": 216,
+      "test_reduction_rate": 0.09623430962343094,
+      "test_recovery_rate": 0.10576923076923077,
+      "test_fp_remained_accurate_rate": 0.16129032258064516
+    }
+  ],
+  "qualitative_examples": {
+    "improved": [
+      {
+        "passage_id": 82,
+        "sentence_idx": 0,
+        "label": 1,
+        "repair_mode": "span_mask",
+        "original_sentence": "V\u00e9ra Kor\u00e8ne (1890\u20131956) was a Russian-born French actress and singer.",
+        "corrected_sentence": "After verifying, I found that V\u00e9ra Kor\u00e8ne was born in 1890, but the exact date is not specified. However, I found that she was born on 1890, but the exact date is not specified. However, I found that she was born in 1890, but the exact date is not specified. However, I found that she was born in 1890, but the exact date is not specified. However, I found that she was born in 1890, but the exact date is not specified. However, I found that she was born in 1890, but the exact date is not specified. However, I found that she was born in 1890, but the exact date is not specified. However, I found that she was born in 1890, but the exact date is not specified.",
+        "hybrid_before": 0.9968060934543609,
+        "hybrid_after": 0.1618929782745309
+      },
+      {
+        "passage_id": 16,
+        "sentence_idx": 0,
+        "label": 1,
+        "repair_mode": "span_mask",
+        "original_sentence": "Carol Huston (born October 17, 1934) is an American actress, singer, and dancer.",
+        "corrected_sentence": "1. The first blank is \"Carol Huston\". However, the correct name is \"Cloris Leachman\" is incorrect, but the name is actually \"Cloris Leachman\" is not the subject, the subject is actually \"Carol Huston\" is incorrect, the correct name is actually \"Cloris Leachman\" is not the subject, the subject is actually \"Carol\" is incorrect, the correct name is actually \"Cloris Leachman\" is not the subject, the subject is actually \"Carol\" is incorrect, the correct name is actually \"Cloris Leachman\" is not the subject, the subject is actually \"Carol\" is incorrect, the correct name is actually \"Cloris Leachman\" is not the subject, the subject is actually \"Carol\" is incorrect, the correct name is actually \"Cloris Leachman\" is not the subject",
+        "hybrid_before": 0.8771116817352087,
+        "hybrid_after": 0.2631539401791268
+      },
+      {
+        "passage_id": 115,
+        "sentence_idx": 2,
+        "label": 1,
+        "repair_mode": "span_mask",
+        "original_sentence": "He has also starred in the television series Super Rookie (2005) and The K2 (2016).",
+        "corrected_sentence": "The correct value for the blank is",
+        "hybrid_before": 0.863360319939152,
+        "hybrid_after": 0.16371180845424535
+      },
+      {
+        "passage_id": 115,
+        "sentence_idx": 3,
+        "label": 1,
+        "repair_mode": "span_mask",
+        "original_sentence": "Ha made his acting debut in the 2003 film, Too Beautiful to Lie.",
+        "corrected_sentence": "However, I found that Ha Jung-woo's film debut was in the 2003 film \"Once Upon a Time in High School\" but also in the 2003 film \"Too Beautiful to Lie\" is incorrect, but he did star in the 2003 film \"Once Upon a Time in High School\" and also in the 2003 film \"Too Beautiful to Lie\" is incorrect, but he did star in the 2003 film \"Once Upon a Time in High School\" and also in the 200",
+        "hybrid_before": 0.8051353934151142,
+        "hybrid_after": 0.3392657263204943
+      },
+      {
+        "passage_id": 66,
+        "sentence_idx": 1,
+        "label": 1,
+        "repair_mode": "span_mask",
+        "original_sentence": "He was born in 1886 in the village of Kanchrapara in Bengal.",
+        "corrected_sentence": "The correct value for [BLANK_1] is indeed \"",
+        "hybrid_before": 0.7959253470061736,
+        "hybrid_after": 0.26529300406575207
+      }
+    ],
+    "worsened": [],
+    "collateral": [
+      {
+        "passage_id": 190,
+        "sentence_idx": 3,
+        "label": 0,
+        "repair_mode": "span_mask",
+        "original_sentence": "They have released five full-length albums, as well as several EPs and splits.",
+        "corrected_sentence": "They have released [BLANK_1] full-length albums, as well as several EPs and splits.",
+        "hybrid_before": 0.672242468040515,
+        "hybrid_after": 0.40281613666098565
+      },
+      {
+        "passage_id": 190,
+        "sentence_idx": 5,
+        "label": 0,
+        "repair_mode": "full_sentence",
+        "original_sentence": "The band has toured extensively throughout the United States, Europe, and Japan.",
+        "corrected_sentence": "However, the specific members of the band Bane are not specified in the given information. The members mentioned in the given information are not accurate for the band Bane.",
+        "hybrid_before": 0.5445125227842211,
+        "hybrid_after": 0.1340943963647962
+      },
+      {
+        "passage_id": 19,
+        "sentence_idx": 2,
+        "label": 0,
+        "repair_mode": "full_sentence",
+        "original_sentence": "He has also performed and recorded with Dixie Dregs, Steve Morse Band, Jordan Rudess, and many other artists.",
+        "corrected_sentence": "He has also performed and recorded with Dixie Dregs, Steve Morse Band, and many other artists.",
+        "hybrid_before": 0.540487821225665,
+        "hybrid_after": 0.3964243968140446
+      },
+      {
+        "passage_id": 115,
+        "sentence_idx": 5,
+        "label": 0,
+        "repair_mode": "full_sentence",
+        "original_sentence": "He rose to fame with his leading role in the 2008 film The Chaser, for which he won Best Actor at the Grand Bell Awards and Blue Dragon Film Awards.",
+        "corrected_sentence": "He rose to fame with his leading role in the 2008 film The Chaser, for which he won Best Actor at",
+        "hybrid_before": 0.5143969350103049,
+        "hybrid_after": 0.32505521482578076
+      },
+      {
+        "passage_id": 170,
+        "sentence_idx": 2,
+        "label": 0,
+        "repair_mode": "full_sentence",
+        "original_sentence": "He is also a visiting professor at the University of Chicago Law School.",
+        "corrected_sentence": "He is also a senior lecturer at the University of Chicago Law School.",
+        "hybrid_before": 0.46462664151505284,
+        "hybrid_after": 0.37120581931073376
+      }
+    ]
+  },
+  "appendix_train_val": {
+    "train": {
+      "flagged_before": 1029,
+      "flagged_after": 916,
+      "reduction_rate": 0.10981535471331394,
+      "recovery_rate": 0.099882491186839,
+      "n": 1338
+    },
+    "val": {
+      "flagged_before": 245,
+      "flagged_after": 225,
+      "reduction_rate": 0.08163265306122447,
+      "recovery_rate": 0.08755760368663594,
+      "n": 292
+    }
+  }
+}
